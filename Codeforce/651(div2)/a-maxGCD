@@ -1,0 +1,20 @@
+import java.util.*;
+public class gc
+{
+            public static void main(String[] args)
+            {
+	Scanner sc=new Scanner(System.in);
+	int t=sc.nextInt();
+	int[] n=new int[t];
+	int x=0;
+	  HashSet<Integer> set1=new HashSet<Integer>();
+	  HashSet<Integer> set2=new HashSet<Integer>();	
+	  int max=-1;
+	for(int k=0;k<t;k++)
+		n[k]=sc.nextInt();
+             while(x<n.length)
+	{
+		System.out.println(n[x]/2);
+                              x++;
+                 } 
+}}
