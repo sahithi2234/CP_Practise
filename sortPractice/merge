@@ -1,0 +1,79 @@
+import java.util.*;
+
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+
+public class Merge {
+    static long c=0;
+    public static void main(String args[] ) throws Exception {
+   
+        
+        Scanner sc = new Scanner(System.in);
+        long cc=0;
+         long n=sc.nextLong();  
+         int q=(int)n;  // Writing output to STDOUT
+         long[] A=new long[q];
+         for(int i=0;i<n;i++)
+            A[i]=sc.nextLong();
+            
+        long start=0;
+      
+        long end=A.length-1;
+        merge_sort(A,start,end);
+     /*for(int i=0;i<n;i++)
+           System.out.println(A[i]);*/
+   System.out.println(c);
+    
+
+    }
+static void merge_sort (long A[ ] , long start , long end )
+   {
+           if( start < end ) {
+           long mid = (start + end ) / 2 ;           
+           merge_sort (A, start , mid ) ;                 
+           merge_sort (A,mid+1 , end ) ;              
+
+         // merge the both parts by comparing elements of both the parts.
+          merge(A,start , mid , end );   
+   }                    
+}
+ static  void merge(long A[ ] , long start, long mid, long end) {
+ //stores the starting position of both parts in temporary variables.
+int p =(int)start ,q =(int)mid+1;
+
+int k=0;
+int x1=(int)start;
+int x2=(int)mid;
+int x3=(int)end;
+int q1=x3-x1+1;
+long Arr[]=new long[q1] ;
+for(int i = x1 ;i <= x3 ;i++) {
+    if(p > x2)     
+    {
+       Arr[ k++ ] = A[ q++] ;
+    }
+
+   else if ( q > x3)   
+       Arr[ k++ ] = A[ p++ ];
+
+   else if( A[ p ] <= A[ q ])     //checks which part has smaller element.
+      Arr[ k++ ] = A[ p++ ];
+
+   else
+   {
+      Arr[ k++ ] = A[ q++];
+      if(p<q)
+      {
+         c++;
+         if(x2-p>0)
+           c=c+(x2-p);
+      }
+  }
+ }
+  for (int p1=0 ; p1< k ;p1++) {
+   /* Now the real array has elements in sorted manner including both 
+        parts.*/
+     A[ x1++ ] = Arr[ p1] ;                          
+  }
+}
+}
