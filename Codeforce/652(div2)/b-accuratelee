@@ -1,0 +1,29 @@
+import java.util.*;
+public class  AL{
+	public static void main(String[] agrs)
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		ArrayList<String> a=new ArrayList<String>();
+		for(int i=0;i<t;i++)
+		{
+			long n=sc.nextInt();
+			String s=sc.next();
+			long x=s.indexOf("1");
+			int y=s.lastIndexOf("0");
+			if(x>y || x<0 )
+			{
+			      a.add(s);
+			      continue;
+			}
+      String x1=s.substring(y+1,s.length());
+			String s1="";
+			for(long k=0;k<=x;k++)
+			        s1+="0";
+			s1+=x1;
+			a.add(s1);
+		}
+		for(int y=0;y<a.size();y++)
+			System.out.println(a.get(y));
+	}
+}
