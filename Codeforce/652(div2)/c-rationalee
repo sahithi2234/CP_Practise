@@ -1,0 +1,46 @@
+import java.util.*;
+public class  RL{
+	public static void main(String[] agrs)
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		ArrayList<Long> b=new ArrayList<Long>();
+		for(int l=0;l<t;l++)
+		{
+			ArrayList<Integer> a=new ArrayList<Integer>();
+			ArrayList<Integer> a1=new ArrayList<Integer>();
+			int n=sc.nextInt();
+			int  k=sc.nextInt();
+			for(int g=0;g<n;g++)
+				a.add(sc.nextInt());
+			for(int v=0;v<k;v++)
+				a1.add(sc.nextInt());
+			Collections.sort(a);
+			Collections.sort(a1);
+			int x2=0,x1=a1.size()-1,max=a.size()-1,min=0;
+			long sum=0;
+			for(int i=0;i<k;i++)
+			{
+				if(a1.get(x2)==1)
+				{
+					sum=sum+a.get(max)+a.get(max);
+					x2++;
+					max--;
+					//System.out.println("Sum "+sum);
+				}
+				else
+				{
+					sum=sum+a.get(max)+a.get(min);
+					min=min+a1.get(x1)-1;
+					max--;
+					x1--;
+				}
+				
+			}
+		
+			b.add(sum);	
+		}
+		for(int p=0;p<b.size();p++)
+			System.out.println(b.get(p));	
+	}
+}
