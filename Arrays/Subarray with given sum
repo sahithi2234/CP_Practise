@@ -1,0 +1,65 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++)
+		{
+		        int n=sc.nextInt();
+		        int s=sc.nextInt();
+		        int[] a=new int[n];
+		        for(int j=0;j<n;j++)
+		                a[j]=sc.nextInt();
+		       SumSub(a,n,s);
+			
+		}
+		        
+	}
+	public static void SumSub(int a[],int n,int s)
+	{
+		int x=0;
+		int d=0;
+		int h,sum=0,flag=1;
+	       for(h=0;h<n;h++)
+	       {
+		sum=a[h];
+		flag=1;
+		if(h==n-1 && sum!=s)
+		{
+		    System.out.println("-1");
+		    break;
+		}
+		else if(sum!=s)
+		{
+		for(int j=h+1;j<n;j++)
+		{
+			sum=sum+a[j];
+			if(sum==s)
+			{
+				System.out.println((h+1)+" "+(j+1));
+				flag=0;
+				break;
+			}
+			else if(sum>s)
+			{
+				flag=1;
+				break;
+			}
+		}
+		if(flag==0)
+			break;
+		}
+		else if(sum ==s)
+		{
+			System.out.println((h+1)+" "+(h+1));
+			break;
+		}
+	      }
+	
+	}
+	      
+	
+}
