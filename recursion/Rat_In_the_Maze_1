@@ -1,0 +1,35 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int[][] a={{1,0,0,0,0},{1,1,0,1,0},{0,1,0,1,0},{0,0,0,1,0},{1,1,1,1,1}};
+	     Sol(a,5,5);
+	}
+	public static void Sol(int[][] a,int r,int c)
+	{
+	    boolean h= SolH(a,r,c,0,0);
+	    System.out.println(h);
+	}
+	public static boolean SolH(int[][] a,int r,int c,int i,int j)
+	{
+	   if(i>=r || j>=c)
+	            return false;
+	   if(i==r-1 && j==c-1)
+	            return true;
+	   if(a[i][j]==0)
+	            return false;
+	   else
+	   {
+	      boolean right=SolH(a,r,c,i,j+1);
+	      boolean down=SolH(a,r,c,i+1,j);
+	      return (right|down);
+	   }
+	}
+	   
+	   
+	   
+	   
+	
+	
+}
