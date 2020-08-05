@@ -1,0 +1,49 @@
+import java.util.*;
+public class Main
+{
+    static int [] p=new int[10];
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int[] a={7,4,3,2,1};
+	    int s=7;
+	    Sol(a,5,s);
+	    
+	}
+	public static void Sol(int[] a,int n,int s)
+	{
+	    SolH(a,n,s,0,0);
+	   
+	}
+	public static void  SolH(int[] a,int n,int s,int i,int pi)
+	{
+	   if(i>n)
+	            return ;
+	   if(i==n && s!=0)
+	    return;
+	    if(s<0)
+		    return;
+	   if(s==0)
+	   {
+	      
+	       for(int y=0;y<pi;y++)
+	       {
+	           System.out.print(p[y]+" ");
+	       }
+	       System.out.println();
+	       return ;
+	   } 
+	   
+	      p[pi]=a[i];
+	      SolH(a,n,s-a[i],i+1,pi+1);
+	      SolH(a,n,s,i+1,pi);
+	      
+	  
+	}
+
+	   
+	   
+	   
+	   
+	
+	
+}
