@@ -1,0 +1,30 @@
+import java.util.*;
+public class Main
+{
+    static int [] p=new int[10];
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int[] a={2,3,5,1,4};
+	    int s=1;
+	    Sol(a,5,s);
+	    
+	}
+	public static void Sol(int[] a,int n,int s)
+	{
+	    int x=SolH(a,n,s,0,n-1);
+	     System.out.println(x);
+	}
+	public static int  SolH(int[] a,int n,int s,int i,int j)
+	{
+	   if(s>n)
+	            return 0;
+	   if(s==n)
+	        return a[i]*s;
+	   int in=a[i]*s+SolH(a,n,s+1,i+1,j);
+	   int ex=a[j]*s+SolH(a,n,s+1,i,j-1);
+	   return Math.max(in,ex);
+	   
+	}  
+	      
+	       
+}
