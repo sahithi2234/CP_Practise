@@ -1,0 +1,43 @@
+import java.util.*;
+public class Main
+{
+    static int [] p=new int[10];
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int[][] a={{1,2,3},{4,5,6},{7,8,9}};
+	     Sol(a,3,3);
+	}
+	public static void Sol(int[][] a,int r,int c)
+	{
+	    SolH(a,r,c,0,0,0);
+	   
+	}
+	public static void  SolH(int[][] a,int r,int c,int i,int j,int pi)
+	{
+	   if(i>=r || j>=c)
+	            return ;
+	   if(i==r-1 && j==c-1)
+	   {
+	       p[pi]=a[i][j];
+	       for(int y=0;y<=pi;y++)
+	       {
+	           System.out.print(p[y]+" ");
+	       }
+	       System.out.println();
+	       return ;
+	   } 
+	   
+	       p[pi]=a[i][j];
+	      SolH(a,r,c,i,j+1,pi+1);
+	      SolH(a,r,c,i+1,j,pi+1);
+	      
+	  
+	}
+
+	   
+	   
+	   
+	   
+	
+	
+}
