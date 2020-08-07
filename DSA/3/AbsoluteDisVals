@@ -1,0 +1,28 @@
+import java.util.*;
+public class AbsoluteDisVals{
+
+     public static void main(String []args){
+          Scanner sc=new Scanner(System.in);
+         int n=sc.nextInt();
+         int[] a=new int[n];
+         HashMap<Integer,Integer> set=new HashMap<Integer,Integer>();
+         int ans=0;
+         for(int i=0;i<n;i++)
+         {
+             int c=sc.nextInt();
+             set.put(c,set.getOrDefault(c,0)+1);
+             a[i]=c;
+             
+         }
+         for(int h=0;h<n;h++)
+         {
+             if(set.get(a[h])==1)
+             {
+                    System.out.println(a[h]);
+                    set.remove(a[h]);
+             }
+         }
+        
+         
+     }
+}
