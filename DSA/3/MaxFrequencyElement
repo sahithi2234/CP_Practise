@@ -1,0 +1,24 @@
+import java.util.*;
+public class MaxFrequencyElement{
+
+     public static void main(String []args){
+          Scanner sc=new Scanner(System.in);
+         int n=sc.nextInt();
+         HashMap<Integer,Integer> set=new HashMap<Integer,Integer>();
+         int ans=0;
+         for(int i=0;i<n;i++)
+         {
+             int c=sc.nextInt();
+             set.put(c,set.getOrDefault(c,0)+1);
+             
+             
+         }
+        Set<Map.Entry<Integer,Integer>> s=set.entrySet();
+        Integer g=Collections.max(set.values());
+        for(Map.Entry x:s)
+        {
+            if(g==x.getValue())
+                System.out.println(x.getKey());
+        }
+     }
+}
