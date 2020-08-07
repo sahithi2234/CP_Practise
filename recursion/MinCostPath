@@ -1,0 +1,36 @@
+import java.util.*;
+public class MinCostPath{
+   static int[] path=new int[5];
+   static int[][] dp=new int[100][100];
+     public static void main(String []args){
+          Scanner sc=new Scanner(System.in);
+         int[][] a={{1,2,3},{4,5,6},{7,8,9}};
+        int max=Sol(a,3,3);
+         System.out.println(max);
+        /*for(int h=0;h<5;h++)
+             System.out.println(path[h]);*/
+         
+     }
+     public static int Sol(int[][] a,int r,int c)
+     {
+         return SolH(a,0,0,0,r,c);
+     }
+     public static int SolH(int[][] a,int i,int j,int pi,int r,int c)
+     {
+         System.out.println("hi");
+        
+         if(i>=r || j>=c)
+                return 100000000 ;
+          path[pi]=a[i][j];
+         if(i==r-1 && j==c-1)
+                return a[i][j];
+         
+         if(dp[i][j]!=0)
+             return dp[i][j];
+         int ri=a[i][j]+ SolH(a,i,j+1,pi+1,r,c);
+         int d0=a[i][j]+SolH(a,i+1,j,pi+1,r,c);
+         dp[i][j]=Math.min(ri,d0);
+         return dp[i][j];
+         
+     }
+}
