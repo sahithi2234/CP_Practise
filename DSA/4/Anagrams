@@ -1,0 +1,32 @@
+import java.util.*;
+public class AnaGrams{
+
+     public static void main(String []args){
+          Scanner sc=new Scanner(System.in);
+         String s1=sc.next();
+         String s2=sc.next();
+         HashMap<Character,Integer> map=new  HashMap<Character,Integer>();
+         for(int i=0;i<s1.length();i++)
+         {
+             Character c=s1.charAt(i);
+             Character w=s2.charAt(i);
+             map.put(c,map.getOrDefault(c,0)+1);
+             map.put(w,map.getOrDefault(w,0)-1);
+         }
+         int flah=0;
+         for(Integer x:map.values())
+         {
+             //System.out.println(x);
+            if(x!=0)
+            {
+                flah=1;
+                break;
+            }
+         }
+         if(flah==0)
+            System.out.println("Anagrams");
+        else
+            System.out.println("not Anagrams");
+         
+     }
+}
