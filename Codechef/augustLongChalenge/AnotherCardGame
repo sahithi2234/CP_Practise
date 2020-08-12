@@ -1,0 +1,31 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++)
+		{
+		    int[] a=new int[2];
+		    for(int g=0;g<2;g++)
+		        a[g]=sc.nextInt();
+		    int x=a[0]/9;
+		    int x1=a[1]/9;
+		    if(a[0]%9!=0)
+		        x=x+1;
+		    if(a[1]%9!=0)
+		        x1=x1+1;
+		    if(x<x1)
+		   {
+		      System.out.println("0 "+x);
+		   }
+		   else
+		         System.out.println("1 "+x1);
+		}
+	}
+}
