@@ -1,0 +1,28 @@
+public class HelloWorld{
+    static int c=0;
+   static int[][] dp=new int[100][100];
+     public static void main(String []args){
+          int[][] a={{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1}};
+          System.out.println(NWays(a,0,0,5,5));
+          
+     }
+     static int NWays(int[][] a,int i,int j,int r,int c)
+     {
+          
+         if(i>=r || j>=c)
+                return 0;
+        if(dp[i][j]!=0)
+            return dp[i][j];
+        
+         if(i==r-1 && j==c-1)
+            {
+                  return 1;
+            }
+            
+            dp[i][j]=NWays(a,i,j+1,r,c)+NWays(a,i+1,j,r,c);
+            return (dp[i][j]);
+        
+     }
+     
+    
+}
