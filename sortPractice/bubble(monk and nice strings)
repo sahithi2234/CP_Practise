@@ -1,0 +1,36 @@
+import java.util.*;
+public class Priority {
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int tx=sc.nextInt();
+	     ArrayList<String> li=new ArrayList<String>();
+		for(int i=0;i<tx;i++)
+		{
+            String s=sc.next();
+			li.add(s);
+		}
+		System.out.println("0");
+		for(int i=1;i<tx;i++)
+		{
+			int x=i;
+			//System.out.println(li.get(x).compareTo(li.get(x+1)));
+            while( x>0 && (li.get(x-1).compareTo(li.get(x)))>0 )
+			{
+			    //System.out.println("hi");
+				String x1=li.get(x);
+				li.set(x,li.get(x-1));
+				li.set(x-1,x1);
+				x--;
+				
+			}
+		//	System.out.println(li.get(i-1)+" "+li.get(i));
+			System.out.println(i-x);
+		
+		}
+		//System.out.println(li);
+	
+	
+	}
+
+}
