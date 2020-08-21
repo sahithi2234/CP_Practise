@@ -1,0 +1,48 @@
+import java.util.*;
+public class Main{
+
+     public static void main(String []args){
+        Scanner sc=new Scanner(System.in);
+        int r=sc.nextInt();
+        int c=sc.nextInt();
+        ArrayList<ArrayList<Integer>> n=new  ArrayList<ArrayList<Integer>>();
+        //ArrayList<Integer> prev=new ArrayList<Integer>();
+        for(int i=0;i<r;i++)
+        {
+            ArrayList<Integer> cur=new ArrayList<Integer>();
+            for(int j=0;j<c;j++)
+            {
+                cur.add(sc.nextInt());
+                
+            }
+            n.add(cur);
+           
+        }
+        int x=sc.nextInt();
+        int u=0;
+        int y=c-1;
+        while(true)
+        {
+            
+                if(x==n.get(u).get(y))
+                {
+                    System.out.println(u+" "+y);
+                    break;
+                }
+                else if(x<n.get(u).get(y))
+                {
+                    y--;
+                }
+                else
+                {
+                    u++;
+                }
+                if(u==r || y==0)
+                {
+                    System.out.println("-1");
+                    break;
+                }
+            
+        }
+     }
+}
