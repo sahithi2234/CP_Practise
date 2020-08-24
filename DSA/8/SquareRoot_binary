@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Main{
+
+     public static void main(String []args){
+         Scanner sc=new Scanner(System.in);
+        float n=sc.nextInt();
+        float l=0;
+        float h=n;
+        float mid=(l+h)/2;
+        int p=10;
+        int flag=0;
+        while(p-->0)
+        {
+            if(mid*mid>n+0.005)
+            {
+                h=mid-1;
+            }
+            else if(mid*mid<n-0.005)
+            {
+                l=mid+1;
+            }
+            else
+            {
+                System.out.println(mid);
+                flag=1;
+                break;
+            }
+            mid=(l+h)/2;
+        }
+        if(flag==0)
+        {
+            System.out.println(mid);
+        }
+        
+     }
+}
