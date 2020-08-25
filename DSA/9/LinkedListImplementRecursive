@@ -61,9 +61,7 @@ public class Main
 	    
 	       if(root==null)
 	       {
-	            System.out.println("hi");
-	            Node newn=new Node(x);
-	            root=newn;
+	            AddS(x);
 	            return;
 	       }
 	       else if(root.next==null)
