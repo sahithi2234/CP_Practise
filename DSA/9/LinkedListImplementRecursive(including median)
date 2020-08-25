@@ -17,7 +17,7 @@ public class Main
 		
 		int ch=0,x=0;
 	  do{
-		System.out.println("choice 1.add at start,2.add at end,3.display,4.delete,5.exit");
+		System.out.println("choice 1.add at start,2.add at end,3.display,4.delete,5.median,6.exit");
 		 ch=sc.nextInt();
 		
 		switch(ch)
@@ -36,9 +36,11 @@ public class Main
 		             x=sc.nextInt();
 		            delete(x);
 		           break;
+		    case 5:middle();
+		            break;
 		  default:System.out.println("invalid");
 		}
-	  }while(ch<5 && ch>0);
+	  }while(ch<6 && ch>0);
 	}
 	public static void AddS(int x)
 	{
@@ -113,5 +115,32 @@ public class Main
 	         }
 	         return;
       	}
+      	public static void middle()
+      	{
+      	    Node f=root;
+      	    Node s=root;
+      	    while(true)
+      	    {
+      	        if(f.next!=null && f.next.next!=null)
+      	        {
+      	            s=s.next;
+      	            f=f.next.next;
+      	        }
+      	        else 
+      	        {
+      	            if(f.next==null)
+      	            {
+      	                System.out.println(s.data);
+      	                break;
+      	            }
+      	            else
+      	            {
+      	                System.out.println(s.data+" "+s.next.data);
+      	                break;
+      	            }
+      	        }
+      	    }
+      	}
       	
 }
+
