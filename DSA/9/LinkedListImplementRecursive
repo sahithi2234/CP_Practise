@@ -1,0 +1,119 @@
+import java.util.*;
+class Node{
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data;
+            this.next=null;
+        }
+       
+    }
+public class Main
+{
+    static Node root=null;
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		int ch=0,x=0;
+	  do{
+		System.out.println("choice 1.add at start,2.add at end,3.display,4.delete,5.exit");
+		 ch=sc.nextInt();
+		
+		switch(ch)
+		{
+		    case 1:System.out.println("enter element yo be added");
+		             x=sc.nextInt();
+		        AddS(x);
+		            break;
+		  case 2:System.out.println("enter element yo be added");
+		             x=sc.nextInt();
+		             AddE(x,root);
+		            break;
+		  case 3:display(root);
+		        break;
+		   case 4:System.out.println("enter element yo be removed");
+		             x=sc.nextInt();
+		            delete(x);
+		           break;
+		  default:System.out.println("invalid");
+		}
+	  }while(ch<5 && ch>0);
+	}
+	public static void AddS(int x)
+	{
+	    
+	    if(root==null)
+	    {
+	        Node newn=new Node(x);
+	        root=newn;
+	    }
+	    else
+	    {
+	         Node newn=new Node(x);
+	         newn.next=root;
+	         root=newn;
+	    }
+	    
+	}
+		public static void AddE(int x,Node root)
+	    {
+	    
+	       if(root==null)
+	       {
+	            System.out.println("hi");
+	            Node newn=new Node(x);
+	            root=newn;
+	            return;
+	       }
+	       else if(root.next==null)
+	       {
+	          Node newn=new Node(x);
+	          root.next=newn;
+	           return;
+	       }
+	       else
+	       {
+	         AddE(x,root.next);
+	       }
+	    
+      	}
+      	public static void display(Node root)
+      	{
+      	    if(root==null)
+      	    {
+      	        return;
+      	    }
+      	    else
+      	    {
+      	        System.out.println(root.data);
+      	        display(root.next);
+      	    }
+      	    
+	         
+      	}
+      	public static void delete(int x)
+      	{
+      	    Node temp=root;
+      	    Node prev=root;
+      	    while(temp!=null)
+	         {
+	             if(temp.data==x)
+	             {
+	                 if(prev==temp)
+	                 {
+	                    root=temp.next; 
+	                 }
+	                 else
+	                 {
+	                  prev.next=temp.next;
+	                 }
+	                 return;
+	             }
+	             prev=temp;
+	             temp=temp.next;
+	         }
+	         return;
+      	}
+      	
+}
