@@ -1,0 +1,50 @@
+import java.util.*;
+public class Main
+{
+    static Stack<Integer> s1=new Stack<Integer>();
+	static 	Stack<Integer> s2=new Stack<Integer>();
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+	    int ch=0;	
+		do{
+		    System.out.println("1.enque,2.deque");
+		     ch=sc.nextInt();
+		    if(ch==1)
+		    {
+		        System.out.println("element:");
+		        int x=sc.nextInt();
+		        enque(x);
+		    }
+		    else
+		    {
+		        deque();
+		    }
+		}
+		while(ch>0 && ch<3);
+		
+	}
+	public static void enque(int x)
+	{
+	    s1.push(x);
+	}
+    public static void deque()
+	{
+	    int x=0;
+	    if(s2.empty())
+	    {
+	     while(x<s1.size())
+	     {
+	        int y=s1.pop();
+	        s2.push(y);
+	     }
+	     System.out.println(s2.pop());
+	    }
+	    else
+	    {
+	        System.out.println(s2.pop());
+	    }
+	}
+		
+		
+	
+}
