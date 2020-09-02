@@ -1,0 +1,76 @@
+import java.util.*;
+public class Main
+{
+    static Queue<Integer> s1=new LinkedList<Integer>();
+	static 	Queue<Integer> s2=new LinkedList<Integer>();
+	static Queue<Integer> temp;
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+	    int ch=0;	
+		do{
+		    System.out.println("1.enque,2.deque");
+		     ch=sc.nextInt();
+		    if(ch==1)
+		    {
+		        System.out.println("element:");
+		        int x=sc.nextInt();
+		        enque(x);
+		    }
+		    else
+		    {
+		        deque();
+		    }
+		    //System.out.println(s1);
+		}
+		while(ch>0 && ch<3);
+		
+	}
+	public static void enque(int x)
+	{
+	    if(s1.isEmpty() && s2.isEmpty())
+	    {
+	        s1.add(x);
+	    }
+	    else
+	    {
+	        if(s2.isEmpty())
+	        {
+	            s2.add(x);
+	            int  g=0;
+	            while(g<s1.size())
+	            {
+	                int e=s1.poll();
+	                s2.add(e);
+	                g++;
+	            }
+	        }
+	        else{
+	            s1.add(x);
+	            int  g=0;
+	            while(g<s2.size())
+	            {
+	                int e=s2.poll();
+	                s1.add(e);
+	                g++;
+	            }
+	        }
+	          
+	       
+	    }
+	}
+    public static void deque()
+	{
+	    if(s1.isEmpty())
+	    {
+	     System.out.println(s2.poll());
+	    }
+	    else
+	    {
+	        System.out.println(s1.poll());
+	    }
+	     
+	}
+		
+		
+	
+}
