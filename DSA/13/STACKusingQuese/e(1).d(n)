@@ -1,0 +1,51 @@
+import java.util.*;
+public class Main
+{
+    static Queue<Integer> s1=new LinkedList<Integer>();
+	static 	Queue<Integer> s2=new LinkedList<Integer>();
+	static Queue<Integer> temp;
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+	    int ch=0;	
+		do{
+		    System.out.println("1.enque,2.deque");
+		     ch=sc.nextInt();
+		    if(ch==1)
+		    {
+		        System.out.println("element:");
+		        int x=sc.nextInt();
+		        enque(x);
+		    }
+		    else
+		    {
+		        deque();
+		    }
+		    System.out.println(s1);
+		}
+		while(ch>0 && ch<3);
+		
+	}
+	public static void enque(int x)
+	{
+	    s1.add(x);
+	}
+    public static void deque()
+	{
+	    int x=0;
+	   
+	     while(x<s1.size()-1)
+	     {
+	        int y=s1.poll();
+	        s2.add(y);
+	        x++;
+	     }
+	     System.out.println(s1.poll());
+	     temp=s1;
+	     s1=s2;
+	     s2=s1;
+	    
+	}
+		
+		
+	
+}
