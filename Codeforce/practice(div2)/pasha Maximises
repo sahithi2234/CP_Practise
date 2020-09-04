@@ -1,0 +1,45 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		long a=sc.nextLong();
+		int k=sc.nextInt();
+		int f=k;
+		StringBuilder s=new StringBuilder();
+		
+		s.append(a);
+		int m=0,m1=s.length()-1;
+		for(int i=0;i<s.length()-1 ;i++)
+		{
+		    
+		    int x=Math.min(i+k,m1);
+		    int g=0,max=i;
+		    //System.out.println(x);
+		    for( g=i;g<=x;g++)
+		    {
+		        
+		        if(s.charAt(max)<s.charAt(g))
+		        {
+		            max=g;
+		        }
+		        
+		    }
+		    
+		    int h=0;
+		    for( h=max;h>i;h--)
+		    {
+		        if(s.charAt(h)>s.charAt(h-1))
+		        {
+		         char c=s.charAt(h);
+		         s.setCharAt(h,s.charAt(h-1));
+		         s.setCharAt(h-1,c);
+		         k--;
+		        }
+		    }
+		      
+		}
+		System.out.println(s);
+	}
+		
+}
