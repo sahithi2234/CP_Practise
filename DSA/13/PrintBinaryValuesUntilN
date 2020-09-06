@@ -1,0 +1,21 @@
+import java.util.*;
+public class Main
+{
+    	public static void main(String[] args) {
+	    int ch=0;
+	    Queue<Integer> s1=new LinkedList<Integer>();
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+	    System.out.println(0);
+	    s1.add(1);
+	    for(int i=1;i<n;i++)
+	    {
+	        int x=s1.remove();
+	        System.out.println(x);
+	        s1.add(x*10);
+	        s1.add((x*10)+1);
+	    }
+	  
+	    
+	}
+}
