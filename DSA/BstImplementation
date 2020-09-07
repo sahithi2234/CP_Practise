@@ -1,0 +1,213 @@
+import java.util.*;
+class Node{
+    int data;
+    Node left,right;
+    Node(int data)
+    {
+        this.data=data;
+        left=null;
+        right=null;
+    }
+}
+public class Main
+{
+  
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Node root=null;
+		int ch=0;
+		do{
+		    System.out.println("choice:1.add,2,remove,3,inorder,4.postorder,5,preorder");
+		     ch=sc.nextInt();
+		    switch(ch)
+		    {
+		        case 1:System.out.println("element:");
+		                int x=sc.nextInt();
+		                root=add(x,root);
+		                break;
+		        case 2:System.out.println("element:");
+		                  x=sc.nextInt();
+		                root=remove(x,root);
+		                break;
+		        case 3:inorder(root);
+		                break;
+		        case 4:postorder(root);
+		                break;
+		        case 5:preorder(root);
+		                break; 
+		       default:System.out.println("invalid");
+		    }
+		              
+		        
+		    }while(ch>0 && ch<6);
+		  }
+
+	public  static Node add(int x,Node root)
+	{
+	     Node n=new Node(x);
+	    if(root==null)
+	    {
+	       
+	        root=n;
+	        return root;
+	        
+	    }
+	   
+	    Node temp=root;
+	    Node tem=null;
+	    int flag=-1;
+	    while(temp!=null)
+	    {
+	        
+	        tem=temp;
+	        if(x<temp.data)
+	        {
+	            
+	            temp=temp.left;
+	            flag=0;
+	        }
+	        else
+	        {
+	            
+	            temp=temp.right;
+	            flag=1;
+	        }
+	        
+	    }
+	     temp=n;
+	    if(x<tem.data)
+	    {
+	       
+	        tem.left=temp;
+	    }
+	    else
+	    {
+	        tem.right=temp;
+	    }
+	    return root;
+	}
+	public static Node remove(int x,Node root)
+	{
+	    if(root==null)
+	    {
+	        System.out.println("noelements");
+	        return root;
+	    }
+	    Node temp=root;
+	    Node tem=root;
+	    while(temp!=null)
+	    {
+	        
+	        if(x==temp.data)
+	        {
+	            if(temp.left!=null && temp.right==null)
+	            {
+	                temp.data=temp.left.data;
+	                temp.left=temp.left.left;
+	                break;
+	            }
+	            if(temp.right!=null && temp.left==null)
+	            {
+	                temp.data=temp.right.data;
+	                temp.right=temp.right.right;
+	                break;
+	            }
+	            if(temp.left==null && temp.right==null)
+	            {
+	                if(temp==root)
+	                {
+	                    root=null;
+	                    break;
+	                }
+	               else
+	               {
+	                if(tem.left==temp)
+	                    tem.left=null;
+	                else
+	                    tem.right=null;
+	                break;
+	               }
+	            }
+	            if(temp.left!=null && temp.right!=null)
+	            {
+	                int x1=minval(temp.right);
+	                temp.data=x1;
+	                temp.right=remove(temp.data,temp.right);
+	                break;
+	            }
+	            
+	        }
+	        if(x<temp.data)
+	        {
+	         tem=temp;
+	         temp=temp.left;
+	        }
+	        else
+	        {
+	            tem=temp;
+	            temp=temp.right;
+	        }
+	    }
+	    return root;
+	    
+	}
+	public static int  minval(Node n)
+	{
+	 
+	    int min=-1;
+	    
+	    while(n!=null)
+	    {
+	        
+	        min=n.data;
+	        n=n.left;
+	    }
+	    
+	    return min;
+	}
+	public static void inorder(Node root)
+	{
+	    
+	    if(root==null)
+	    {
+	       // System.out.println("no elemtns");
+	        return;
+	    }
+	    
+	    inorder(root.left);
+	    System.out.println(root.data);
+	    inorder(root.right);
+	     
+	}
+		public static void postorder(Node root)
+	{
+	    
+	    if(root==null)
+	    {
+	       // System.out.println("no elemtns");
+	        return;
+	    }
+	    
+	    postorder(root.left);
+	    postorder(root.right);
+	    System.out.println(root.data);
+	    
+	     
+	}
+	public static void preorder(Node root)
+	{
+	    
+	    if(root==null)
+	    {
+	       // System.out.println("no elemtns");
+	        return;
+	    }
+	    System.out.println(root.data);
+	    preorder(root.left);
+	    preorder(root.right);
+	    
+	    
+	     
+	}
+    
+}
