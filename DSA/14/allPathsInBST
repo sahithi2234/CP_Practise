@@ -1,0 +1,38 @@
+class Tree{
+    static ArrayList<Integer> a;
+    public ArrayList<ArrayList<Integer>> Paths(Node root){
+        ArrayList<ArrayList<Integer>> x1=new ArrayList<ArrayList<Integer>>();
+        Stack<Integer> s=new Stack<Integer>();
+                  PathsH(root,x1,s);
+        return x1;
+                
+        }
+        public void PathsH(Node root,ArrayList<ArrayList<Integer>> x1,Stack<Integer> s)
+        {
+            if(root==null)
+                 return;
+           s.push(root.data);
+           if(root.left==null && root.right==null)
+           {
+               a=new ArrayList<Integer>(s);
+               x1.add(a);
+               if(!s.isEmpty())
+                   s.pop();
+                return ;
+           }
+           
+           
+           PathsH(root.left,x1,s);
+           PathsH(root.right,x1,s);
+           //if all the children are done removing the childs parent
+           s.pop();
+           return ;
+        }
+           
+           
+            
+       
+        
+        
+        
+    }
