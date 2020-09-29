@@ -1,0 +1,29 @@
+import java.util.*;
+import java.lang.*;
+
+class Main
+{
+    static HashMap<Long,Long> h;
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+	
+		while(sc.hasNextLong())
+		{
+		    h=new HashMap<Long,Long>();
+			long n=sc.nextLong();
+			System.out.println(Sol(n));
+		}
+	}
+
+	public static long Sol(long n)
+	{
+		if(n<12)
+		    return n;
+		if(h.containsKey(n))
+		        return h.get(n);
+		long x=Sol(n/2)+Sol(n/3)+Sol(n/4);
+		h.put(n,Math.max(x,n));
+		return h.get(n);
+	}
+}
