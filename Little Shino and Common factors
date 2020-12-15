@@ -1,0 +1,82 @@
+ how many integers can divide both the numbers.
+ 
+ code: c++
+ 
+ /*
+// Sample code to perform I/O:
+*/
+#include <iostream>
+#include <bits/stdc++.h> 
+using namespace std;
+
+int main() {
+	long a,b;
+    long n;
+	cin >> a >> b;	
+	if(a>b)
+	{
+    n=b;
+	}
+	else
+	{
+		n=a;
+	}
+	int c=0;
+	for(long i=1;i<=sqrt(n);i++)
+	{
+		long i1=n/i;
+		
+
+		if(a>b)
+		{
+			if(b%i==0)
+			{
+				if(a%i==0)
+				{
+                    c++;
+					if(a%(b/i)==0)
+						c++;
+				}
+				if(a%(b/i)==0)
+						c++;
+			}
+		}
+		else if(a==b)
+		{
+			if(a%i==0)
+			{
+				if(a/i==i)
+					c++;
+				else
+					c=c+2;
+			}
+		}
+		else
+		{
+			if(a%i==0)
+			{
+				if(b%i==0)
+				{
+                    c++;
+					if(b%(a/i)==0)
+						c++;
+				}
+				if(b%(a/i)==0)
+						c++;
+			}
+		}
+		
+
+	}
+	
+									// Reading input from STDIN
+	cout <<  c << endl;		// Writing output to STDOUT
+}
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+
+
+// Write your code here
+
+ 
+ 
