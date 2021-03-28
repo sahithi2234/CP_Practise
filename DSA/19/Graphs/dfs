@@ -1,0 +1,34 @@
+import java.util.*;
+public class Main
+{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int nv=sc.nextInt();
+        HashMap<Integer,ArrayList<Integer>> hm=new HashMap<Integer,ArrayList<Integer>>();
+        for(int i=0;i<nv;i++)
+        {
+            int n=sc.nextInt();
+            ArrayList<Integer> a=new ArrayList<Integer>();
+            for(int j=0;j<n;j++)
+            {
+                a.add(sc.nextInt());
+            }
+            hm.put(i,a);
+        }
+         ArrayList<Integer> vis =new ArrayList<Integer>();
+        dfs(hm,1,nv,vis);
+        
+    }
+    public static void dfs(HashMap<Integer,ArrayList<Integer>> map,int st,int nv, ArrayList<Integer> vis)
+    {
+        if(vis.contains(st))
+            return;
+        else
+        {
+            System.out.println(st);
+            vis.add(st);
+        }
+        for( int y=0;y<map.get(st).size();y++)
+                dfs(map,map.get(st).get(y),nv,vis);
+    }
+}
