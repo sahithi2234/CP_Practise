@@ -1,0 +1,92 @@
+import java.util.*;
+class pair
+{
+        int a, b;
+        pair(int a,int b)
+        {
+            this.a=a;
+            this.b=b;
+        }
+}
+public class Main
+{
+    public static int[][] hm, s,vis;
+    static int[] x={-1,-1,-1,0,0,1,1,1};
+    static int[] y={-1,0,1,-1,1,-1,0,1};
+    static int nv;
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+         nv=sc.nextInt();
+         hm=new int[nv][nv];
+         s=new int[nv][nv];
+         vis=new int[nv][nv];
+        for(int i=0;i<nv;i++)
+        {
+            for(int j=0;j<nv;j++)
+            {
+                hm[i][j]=sc.nextInt();
+            }
+        }
+        int x1=sc.nextInt();
+        int y1=sc.nextInt();
+        int x2=sc.nextInt();
+        int y2=sc.nextInt();
+        bfs(hm,nv,x1,y1,x2,y2);
+       
+        for(int i=0;i<nv;i++)
+        {
+            for(int j=0;j<nv;j++)
+            {
+                System.out.print(s[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+    
+    public static void bfs(int[][] hm,int nv,int x1,int y1,int x2,int y2)
+    {
+        Queue<pair> q=new LinkedList<pair>();
+        
+        vis[x1][y1]=1;
+        int mi=0;
+        q.add(new pair(x1,y1));
+        while(!q.isEmpty())
+        {
+               pair d=q.remove();
+               int a=d.a;
+               int b=d.b;
+               if((x2==a) &&  (y2==b))
+                {
+                       
+                        
+                        break;
+                }
+                for(int i=0;i<8;i++)
+                {
+                     
+                     
+                     
+                            
+                    if(isValid(i,a,b))
+                    {
+                        s[a+x[i]][b+y[i]]=s[a][b]+1;
+                        q.add(new pair(a+x[i],b+y[i]));
+                        vis[a+x[i]][b+y[i]]=1;
+                    }
+                    
+                }
+                
+        }
+            
+         
+    }
+    public static boolean isValid(int i,int a,int b )
+    {
+        if(x[i]+a<0||x[i]+a>=nv||y[i]+b<0||y[i]+b>=nv||hm[a][b]==1||vis[a+x[i]][b+y[i]]==1)
+        {
+            return false;
+        }
+        else
+            return true;
+    }
+}
