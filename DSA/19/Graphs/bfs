@@ -1,0 +1,43 @@
+import java.util.*;
+public class Main
+{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int nv=sc.nextInt();
+        HashMap<Integer,ArrayList<Integer>> hm=new HashMap<Integer,ArrayList<Integer>>();
+        for(int i=0;i<nv;i++)
+        {
+            int n=sc.nextInt();
+            ArrayList<Integer> a=new ArrayList<Integer>();
+            for(int j=0;j<n;j++)
+            {
+                a.add(sc.nextInt());
+            }
+            hm.put(i,a);
+        }
+        bfs(hm,0,nv);
+        
+    }
+    public static void bfs(HashMap<Integer,ArrayList<Integer>> map,int st,int nv)
+    {
+          ArrayList<Integer> vis =new ArrayList<Integer>();
+         Queue<Integer> q = new LinkedList<Integer>();
+          q.add(st);
+          vis.add(st);
+          while(!q.isEmpty())
+          {
+                    st=q.peek();
+                   System.out.println(q.remove());
+                   for(int h=0;h<map.get(st).size();h++)
+                   {
+                       if(!vis.contains(map.get(st).get(h)))
+                       {
+                           q.add(map.get(st).get(h));
+                           vis.add(map.get(st).get(h));
+                       }
+                   }
+               
+               
+               
+          }
+    }
