@@ -1,0 +1,68 @@
+class pair
+{
+    int f,s;
+    pair(int f,int s)
+    {
+        this.f=f;
+        this.s=s;
+    }
+}
+class Solution
+{
+    public int[][] vis;
+    public int minStepToReachTarget(int KnightPos[], int TargetPos[], int N)
+    {
+       int[] y1={-2,-2,-1,-1,1,1,2,2};
+        int[] x1={-1,1,-2,2,-2,2,-1,1};
+        Queue<pair> q=new LinkedList<pair>();
+        int[][] s=new int[N][N];
+        vis=new int[N][N];
+        q.add(new pair(KnightPos[0]-1,KnightPos[1]-1));
+        vis[KnightPos[0]-1][KnightPos[1]-1]=1;
+        while(!q.isEmpty())
+        {
+             pair p=q.remove();
+             for(int i=0;i<8;i++)
+             {
+                 int a=p.f+x1[i];
+                 int b=p.s+y1[i];
+                 if(a==(TargetPos[0]-1) && b==(TargetPos[1]-1))
+                 {
+             
+                   return 1+s[p.f][p.s];
+                 }
+                       
+                 if(isValid(a,b,N))
+                 {
+                     vis[a][b]=1;
+                     s[a][b]=1+s[p.f][p.s];
+                     q.add(new pair(a,b));
+                 }
+                 
+             }
+        }
+       
+        return s[TargetPos[0]-1][TargetPos[1]-1];
+    }
+    public boolean isValid(int a,int b,int N)
+    {
+        if(a<0||a>=N||b<0||b>=N)
+        {
+            return false;
+            
+        }
+        if(vis[a][b]==1)
+            return false;
+        return true;
+    }
+}
+
+
+
+
+Input:
+N=6
+knightPos[ ] = {4, 5}
+targetPos[ ] = {1, 1}
+Output:
+3
