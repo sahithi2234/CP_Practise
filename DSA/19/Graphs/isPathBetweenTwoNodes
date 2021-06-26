@@ -1,0 +1,100 @@
+import java.util.*;
+
+class Gra
+{
+     public int V;
+    public LinkedList<Integer> edges[];
+  
+ 
+    //Function to add an edge into the graph
+    void adE(int v,int w) 
+    {   
+        edges[v].add(w);  
+    }
+    
+    Gra(int v)
+    {
+        V = v;
+       edges = new LinkedList[v];
+        for (int i=0; i<v; ++i)
+            edges[i] = new LinkedList();
+    }
+    int isPathTrue(int s,int d)
+    {
+         LinkedList<Integer>temp;
+ 
+        
+        int visited[] = new int[V];
+ 
+
+        LinkedList<Integer> q = new LinkedList<Integer>();
+ 
+        
+        visited[s]=1;
+        q.add(s);
+ 
+     
+        Iterator<Integer> i;
+        while (q.size()!=0)
+        {
+            s = q.poll();
+ 
+            int n;
+            i = edges[s].listIterator();
+ 
+            while (i.hasNext())
+            {
+                n = i.next();
+ 
+                
+                if (n==d)
+                    return 1;
+ 
+              
+                if (visited[n]==0)
+                {
+                    visited[n] = 1;
+                    q.add(n);
+                }
+            }
+        }
+ 
+        return 0;
+    }
+    
+}
+ 
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] a=new int[n];
+		HashMap<Integer,Integer> map=new HashMap<Integer,Integer>();
+		for(int i=0;i<n;i++)
+		{
+		    a[i]=sc.nextInt();
+		    map.put(a[i],i);
+		}
+		Gra g = new Gra(n);
+		int e=sc.nextInt();
+		for(int j=0;j<e;j++)
+		{
+		    
+		    int x=sc.nextInt();
+		    int y=sc.nextInt();
+		    g.adE(map.get(x),map.get(y));
+		    
+		}
+		
+		int a1=sc.nextInt();
+		int b1=sc.nextInt();
+		int x1=map.get(a1),y1=map.get(b1);
+	
+		
+		System.out.println(g.isPathTrue(x1,y1));
+		
+		
+	}
+	
+}
