@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class HelloWorld{
+     static  HashSet<String> sol=new  HashSet<String>();
+     public static void main(String []args){
+        
+        Scanner sc=new Scanner(System.in);
+         String s=sc.next();
+         int k=sc.nextInt();
+         char[] a=s.toCharArray();
+        // Arrays.sort(a);
+         StringBuilder s1=new StringBuilder();
+        // System.out.println(a[0]);
+         boolean[] used=new boolean[a.length];
+         Solution(a,0,a.length,s1,used);
+         ArrayList<String> res=new ArrayList<String>(sol);
+         Collections.sort(res);
+         System.out.println(res.get(k-1));
+         
+     }
+     public static void  Solution(char[] a,int i,int n,StringBuilder s1,boolean[] used)
+     {
+         if(i>n)
+         {
+             return;
+         }
+         
+         if(i==n)
+         {
+            sol.add(s1.toString());
+            
+            return;
+         }
+         
+         for(int b=0;b<n;b++)
+         {
+              
+             if(used[b]!=true)
+             {
+                 used[b]=true;
+                 s1.append(a[b]);
+                 Solution(a,i+1,n,s1,used);
+                 used[b]=false;
+             }
+             
+             s1.delete(i,i+1);
+             
+              
+         }
+         
+         return ;
+         
+     }
+}
