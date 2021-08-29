@@ -1,0 +1,87 @@
+import java.util.*;
+
+ class Pair
+    {
+        int edge ;
+        int weight;
+        public Pair(int edge,int weight)
+        {
+            this.edge=edge;
+            this.weight=weight;
+        }
+    }
+class Graph{
+    ArrayList<Pair>[] x;
+    int V;
+    public Graph(int n)
+    {
+        V=n;
+        x=new ArrayList[n];
+        for(int i=0;i<n;i++)
+        {
+            x[i]=new ArrayList<>();
+        }
+    }
+    
+   
+    void addEdge(int a,int b,int w)
+    {
+        
+            x[a].add(new Pair(b,w));
+            x[b].add(new Pair(a,w));
+    }
+    
+    int prims()
+    {
+       Queue<Pair> p=new PriorityQueue(new Comparator<Pair>(){
+         @Override
+         public int compare(Pair p1,Pair p2)
+         {
+             return p1.weight-p2.weight;
+         }
+       }
+         );
+         
+         boolean[] visited=new boolean[V];
+         int ans=0;
+        
+    
+         p.add(new Pair(0,0));
+         
+         while(!p.isEmpty())
+         {
+             Pair best=p.poll();
+             int curr=best.edge;
+             int currw=best.weight;
+             
+             if(visited[curr]==true)
+                continue;
+            ans+=currw;
+            visited[curr]=true;
+             for(Pair z:x[curr])
+             {
+                 p.add(new Pair(z.edge,z.weight));
+             }
+         }
+         return ans;
+    
+    }
+}
+public class HelloWorld{
+
+     public static void main(String []args){
+        Scanner sc=new Scanner(System.in);
+        int v=sc.nextInt();
+        Graph g=new Graph(v);
+        int e=sc.nextInt();
+        for(int i=0;i<e;i++)
+        {
+            int x=sc.nextInt();
+            int y=sc.nextInt();
+            int w=sc.nextInt();
+            g.addEdge(x,y,w);
+        }
+        System.out.println(g.prims());
+        
+     }
+}
